@@ -93,8 +93,8 @@ if __name__ == '__main__':
     map = cv2.imread(map_path)
     method = 'd2net'
     start_time = time.time()
-    print("=====PnP method=====", end = '\n')
+    print("=====PnP method=====")
     PnP_solve()
-    print("=====direct align method=====")
+    print("\n=====direct align method=====")
     direct_match_solve()
     print("running time is : {} s".format(time.time()-start_time))
