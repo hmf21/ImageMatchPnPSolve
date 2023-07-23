@@ -44,7 +44,10 @@ def main():
 
     success, vector_rotation, vector_translation = cv2.solvePnP(map_points_3D, img_points_2D, intrisicMat,
                                                                 distCoeffs, flags = 0)
-    es_img_lon, es_img_lat = vector_translation[1], vector_translation[0]
+    R, _ = cv2.Rodrigues(vector_rotation)
+    pos = np.dot(-np.linalg.inv(R), vector_translation)
+
+    es_img_lon, es_img_lat = pos[1], pos[0]
 
     print(gt_img_lat, es_img_lat)
     print(gt_img_lon, es_img_lon)
