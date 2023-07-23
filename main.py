@@ -49,8 +49,8 @@ def direct_match_solve():
     loc_es = (es_img[0], es_img[1])
     dist_error = hs.haversine(loc_gt, loc_es, unit = Unit.METERS)
 
-    print("gt_img_lat: {}, es_img_lat: {}",format(gt_img_lat, es_img[0]))
-    print("gt_img_lon: {}, es_img_lon: {}",format(gt_img_lon, es_img[1]))
+    print("gt_img_lat: ", gt_img_lat, "es_img_lat: ", es_img[0])
+    print("gt_img_lon: ", gt_img_lon, "es_img_lon: ", es_img[1])
     print("localization error is : {} m".format(dist_error))
 
 
@@ -79,8 +79,8 @@ def PnP_solve():
     dist_error = hs.haversine(loc_gt, loc_es, unit = Unit.METERS)
     # dist_error = math.sqrt((gt_img_lat - es_img_lat[0]) ** 2 + (gt_img_lon - es_img_lon[0]) ** 2) * 0.381
 
-    print("gt_img_lat: {}, es_img_lat: {}", format(gt_img_lat, es_img_lat[0].numel))
-    print("gt_img_lon: {}, es_img_lon: {}", format(gt_img_lon, es_img_lon[0].numel))
+    print("gt_img_lat: ", gt_img_lat, "es_img_lat: ", es_img_lat[0])
+    print("gt_img_lon: ", gt_img_lon, "es_img_lon: ", es_img_lon[0])
     print("localization error is : {} m".format(dist_error))
 
 
