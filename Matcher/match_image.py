@@ -77,16 +77,16 @@ def d2net_match(img1_path, img2_path, idx=0, save_path=None):
         image_2_kpts.append(cv2.KeyPoint(x=keypoint[0], y=keypoint[1], size=1))
 
     # # # brute-force match
-    bf = cv2.BFMatcher(cv2.NORM_L2, crossCheck = True)
-    matches = bf.match(image_1_descriptors, image_2_descriptors)
-    matches = sorted(matches, key = lambda x: (x.distance) * (1))
-    correct_matched_map = [image_1_kpts[i.queryIdx].pt for i in matches[:30]]
-    correct_matched_img = [image_2_kpts[i.trainIdx].pt for i in matches[:30]]
-    # image_1_gray = cv2.cvtColor(image_1, cv2.COLOR_RGB2GRAY)
-    # image_2_gray = cv2.cvtColor(image_2, cv2.COLOR_RGB2GRAY)
-    img3 = cv2.drawMatches(cv2.imread(img1_path).astype('uint8'), image_1_kpts,
-                           cv2.imread(img2_path).astype('uint8'), image_2_kpts, matches[:20], None, flags = 2)
-    cv2.imwrite('./data/sample1/result/match.jpg', img3)
+    # bf = cv2.BFMatcher(cv2.NORM_L2, crossCheck = True)
+    # matches = bf.match(image_1_descriptors, image_2_descriptors)
+    # matches = sorted(matches, key = lambda x: (x.distance) * (1))
+    # correct_matched_map = [image_1_kpts[i.queryIdx].pt for i in matches[:30]]
+    # correct_matched_img = [image_2_kpts[i.trainIdx].pt for i in matches[:30]]
+    # # image_1_gray = cv2.cvtColor(image_1, cv2.COLOR_RGB2GRAY)
+    # # image_2_gray = cv2.cvtColor(image_2, cv2.COLOR_RGB2GRAY)
+    # img3 = cv2.drawMatches(cv2.imread(img1_path).astype('uint8'), image_1_kpts,
+    #                        cv2.imread(img2_path).astype('uint8'), image_2_kpts, matches[:20], None, flags = 2)
+    # cv2.imwrite('./data/sample1/result/match.jpg', img3)
     # return None, correct_matched_map, correct_matched_img
 
     if (len(image_1_kpts) >= 10) and (len(image_2_kpts) >= 10):
