@@ -116,9 +116,11 @@ def PnP_solve():
     return dist_error
 
 
-
 if __name__ == '__main__':
     dir_path = './data/sample/*'
+    if os.path.exists('./data/result.csv'):
+        os.remove('./data/result.csv')
+
     for dir_sub_path in glob.glob(dir_path):
         img_path, map_path = glob.glob(dir_sub_path+'\\*.png')
         img = cv2.imread(img_path)
@@ -133,9 +135,6 @@ if __name__ == '__main__':
         DrM_dist_error = direct_match_solve()
         DrM_runtime = time.time() - start_time - PnP_runtime
         print("direct align running time is : {} s".format(DrM_runtime))
-
-        if os.path.exists('./data/result.csv'):
-            os.remove('./data/result.csv')
 
         with open('./data/result.csv', 'a', encoding = 'UTF8', newline = '') as f:
             writer = csv.writer(f)
